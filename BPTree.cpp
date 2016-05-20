@@ -2,7 +2,7 @@
 
 
 template<typename KeyType>
-void* BPTree::Find(KeyType key_value)
+void* BPTree<KeyType>::Find(KeyType key_value)
 {
 	if (root_==NULL)
 	{
@@ -12,7 +12,7 @@ void* BPTree::Find(KeyType key_value)
 }
 
 template<typename KeyType>
-bool BPTree::Insert(void* record_pointer,KeyType key_value)
+bool BPTree<KeyType>::Insert(void* record_pointer, KeyType key_value)
 {
 	Node<KeyType>* new_node=root_->Insert(record_pointer,key_value);
 	if (new_node==nullptr)//根节点无分裂

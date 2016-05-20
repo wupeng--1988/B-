@@ -64,6 +64,48 @@ Node<KeyType>* LeafNode<KeyType>::Insert(void* ptr ,KeyType key_value)
 		{
 			InsertKey(ptr,key_value);
 		}
+		return new_node;
 	}
-
+	else
+	{
+		InsertKey(ptr, key_value);
+		return NULL;
+	}
+}
+template<typename KeyType>
+void LeafNode<KeyType>::InsertKey(void* ptr, KeyType key_value)
+{
+	int low_index = 0;
+	int up_index = size_;
+	while (low_index < up_index)
+	{
+		int mid_index = (low_index + up_index) / 2;
+		assert(key_[mid_index] != key_value);
+		if (key_[mid_index]<key_value)
+		{
+			low_index = mid_index;
+			if (low_index = up_index - 1)
+			{
+				break;
+			}
+			continue;
+		}
+		if (key_[mid_index]>key_value)
+		{
+			up_index = mid_index;
+			if (low_index = up_index - 1)
+			{
+				break;
+			}
+			continue;
+		}
+	}
+	for (int i = size_ - 1; i > low_index;--i)
+	{
+		pointer_[i + 1] = pointer_[i];
+		key_[i + 1] = key_[i];
+	}
+	pointer_[low_index] = ptr;
+	key_[low_index] = key_value;
+	return;
 }

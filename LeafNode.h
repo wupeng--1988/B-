@@ -14,7 +14,7 @@ public:
 	int Search(KeyType key_value)override;
 	Node<KeyType>* Insert(void* ptr ,KeyType key_value) override;
 	Node<KeyType>* Split()override;
-	int SearchInertPos(key_value);
+	int SearchInertPos(KeyType key_value);
 	void InsertKey(void* ptr ,KeyType key_value);//不会造成分裂的插入
 };
 
